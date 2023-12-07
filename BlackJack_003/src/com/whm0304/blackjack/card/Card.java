@@ -7,14 +7,15 @@ import java.util.List;
 public class Card {
 
 	private String[] shape = { "스페이드", "클로버", "하트", "다이아" };
-	
+	private int cardIndex;
 
 	// 52장 고정되어있다
-	private List<String> cards = null;
+	private List<String> card = null;
 
 	public Card() {
-		cards = new ArrayList<String>();
+		card = new ArrayList<String>();
 		System.out.println("card 생성");
+		cardIndex = 0;
 		initSetCard();
 	}
 
@@ -24,10 +25,11 @@ public class Card {
 		for (int i = 0; i < 4; i++) {
 			createCard(i);
 		}
-		Collections.shuffle(cards);	
-		for(int i = 0; i < 52; i++) {
-			System.out.println(cards.get(i));
-		}
+		Collections.shuffle(card);
+		//카드 52장 확인 
+//		for(int i = 0; i < 52; i++) {
+//			System.out.println(card.get(i));
+//		}
 
 	}
 	
@@ -49,10 +51,17 @@ public class Card {
 			} else {
 				shapeName = shapeName + i;
 			}
-			cards.add(shapeName);
+			card.add(shapeName);
 		}
 	}
 	
+	public String select() {
+		String selectCard ="";
+		selectCard = card.get(cardIndex);
+				
+		cardIndex++;
+		return selectCard;
+	}
 	
 	
 	
