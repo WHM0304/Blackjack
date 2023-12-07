@@ -7,6 +7,11 @@ import java.util.Scanner;
 // 기본규칙에 준수하여 만들기
 // 추후 추가될 내용들을 생각하기
 
+// 문제점 : 1. 카드 개수가 정해지지 않음
+//			2. 카드 문양이 아예없음
+//			3. 게임의 진행이 어떻게 되는지 확인이 힘듬
+			
+
 public class Blackjack_001 {
 	
 	public static void main(String[] args) {
