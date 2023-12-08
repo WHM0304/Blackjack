@@ -6,7 +6,7 @@ import java.util.List;
 public class Player {
 
 	private List<String> playerCard = null;
-
+	 
 	public Player() {
 
 		

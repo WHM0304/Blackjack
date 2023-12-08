@@ -16,6 +16,9 @@ public class Dealer {
 	public void setDealerCard(String selctCard) {
 		dealerCard.add(selctCard);
 	}
+	public void plusDealerCard() {
+		
+	}
 
 	public void dealerDeck() {
 		System.out.println("딜러 덱");
