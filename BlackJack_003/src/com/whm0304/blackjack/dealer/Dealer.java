@@ -20,7 +20,7 @@ public class Dealer {
 		
 	}
 
-	public void dealerDeck() {
+	public void dealerShowDeck() {
 		System.out.println("딜러 덱");
 		System.out.print("[");
 		for (int i = 0; i < dealerCard.size(); i++) {

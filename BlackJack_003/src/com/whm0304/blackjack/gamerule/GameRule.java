@@ -7,7 +7,7 @@ import com.whm0304.blackjack.player.Player;
 
 public class GameRule {
 	private boolean bust ;
-	private boolean dbust;
+	private boolean dBust;
 	Player player = null;
 	Dealer dealer = null;
 	Scanner scan = null;
@@ -23,19 +23,19 @@ public class GameRule {
 		this.bust = false;
 		if(score >21) {
 			this.bust = true;
-			return bust;
+			
 		}
-		return false;
+		return bust;
 	}
 	public boolean dealerBustCheck(Dealer dealer) {
 		int dealerScore = dealer.totalScore();
 		System.out.println(dealerScore);
-		this.dbust = false;
+		this.dBust = false;
 		if(dealerScore> 21) {
-			this.dbust = true;
-			return dbust;
+			this.dBust = true;
+			
 		}
-		return false;
+		return dBust;
 	}
 	public void gameGo() {
 		while(true) {
