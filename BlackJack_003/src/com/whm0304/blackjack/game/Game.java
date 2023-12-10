@@ -14,10 +14,10 @@ public class Game {
 	private Player player = null;
 	private Dealer dealer = null;
 	GameRule gameRule = null;
-	Line line = new Line();
+	Line line = null;
 	public Game() {
 		gameRule = new GameRule();
-		
+		line = new Line();
 	}
 
 	public void play() {
