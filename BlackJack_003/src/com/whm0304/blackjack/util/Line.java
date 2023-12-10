@@ -3,8 +3,11 @@ package com.whm0304.blackjack.util;
 public class Line {
 	
 	
-	public void dLine() {
-		System.out.println("=".repeat(40));
+	public void dLine(int length) {
+		System.out.println("=".repeat(length));
+	}
+	public void sLine(int length) {
+		System.out.println("-".repeat(length));
 	}
 
 }

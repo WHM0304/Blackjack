@@ -15,11 +15,12 @@ public class GameRule {
 		player = new Player();
 		dealer = new Dealer();
 		scan = new Scanner(System.in);
+		
 	}
 	
 	public boolean playerBustCheck(Player player) {
 		int score = player.totalScore();
-		System.out.println(score);
+		
 		this.bust = false;
 		if(score >21) {
 			this.bust = true;
@@ -29,7 +30,7 @@ public class GameRule {
 	}
 	public boolean dealerBustCheck(Dealer dealer) {
 		int dealerScore = dealer.totalScore();
-		System.out.println(dealerScore);
+		
 		this.dBust = false;
 		if(dealerScore> 21) {
 			this.dBust = true;
@@ -47,6 +48,26 @@ public class GameRule {
 			
 		}
 	}
+	public boolean gameResult(int player, int dealer) {
+		int dealerMin = 21 - dealer;
+		int playerMin = 21 - player;
+		
+		
+		if(dealerMin < playerMin && dBust == false) {
+			
+			return false;
+		} else if(dealerMin > playerMin && bust == false){
+			
+			return true;
+		} else if(dealerMin == 0 && playerMin != 0) {
+			return false;
+		} else if(dealerMin != 0 && playerMin == 0) {
+			return true;
+		} else if(dealerMin == 0 && playerMin == 0) {
+			return true;
+		}
+		return false;
+	} 
 
 
 }

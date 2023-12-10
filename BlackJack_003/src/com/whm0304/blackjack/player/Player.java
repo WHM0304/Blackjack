@@ -21,7 +21,7 @@ public class Player {
 		System.out.println("플레이어 덱");
 		System.out.print("[");
 		for(int i = 0 ; i <playerCard.size(); i++) {
-			System.out.printf("%s ,",playerCard.get(i));	
+			System.out.printf("%s  ",playerCard.get(i));	
 			
 		}		
 		System.out.println("]");

@@ -6,6 +6,7 @@ import com.whm0304.blackjack.card.Card;
 import com.whm0304.blackjack.dealer.Dealer;
 import com.whm0304.blackjack.gamerule.GameRule;
 import com.whm0304.blackjack.player.Player;
+import com.whm0304.blackjack.util.Line;
 
 public class Game {
 
@@ -13,9 +14,10 @@ public class Game {
 	private Player player = null;
 	private Dealer dealer = null;
 	GameRule gameRule = null;
-
+	Line line = new Line();
 	public Game() {
 		gameRule = new GameRule();
+		
 	}
 
 	public void play() {
@@ -39,98 +41,87 @@ public class Game {
 			player = new Player();
 			dealer = new Dealer();
 			gameRule = new GameRule();
-			// 2장 받고 나서 확인하기
 
 			player.setPlayerCard(card.select());
 			System.out.println();
 			dealer.setDealerCard(card.select());
 			System.out.println();
+			line.sLine(30);
 			dealer.dealerShowDeck();
 			player.showDeck();
-
+			line.sLine(30);
 		}
+
+		// 2장씩 확인하기
 		gameRule.gameGo();
 		dealer.setDealerCard(card.select());
 		System.out.println();
+		line.sLine(30);
 		dealer.dealerShowDeck();
 		player.showDeck();
+		line.sLine(30);
 		gameRule.gameGo();
 		player.setPlayerCard(card.select());
 		System.out.println();
+		line.sLine(30);
 		dealer.dealerShowDeck();
 		player.showDeck();
+		line.sLine(30);
 		gameRule.gameGo();
-		// 딜러 턴 딜러가 17미만일경우에 카드를 뽑고 아닐경우에 결과
+		line.sLine(30);
 		boolean dBust = gameRule.dealerBustCheck(dealer);
-
-		System.out.println("딜러의 점수 : " + dealer.totalScore());
-		System.out.println("플레이어의 점수 : " + player.totalScore());
 		boolean bust = gameRule.playerBustCheck(player);
-		// 2장씩 뽑았고 딜러도 카드를 뽑았으므로 이제 카드를 받을지 아니면 유지하고 결과볼지 확인
+		dealer.dealerShowDeck();	
+		player.showDeck();
+		line.sLine(30);
+		// 시작 2장씩 뽑았고 플레이어 턴
 		while (true) {
 			
 			System.out.println("hit(1) or stay(2) >> ");
 			String game = scan.nextLine();
-			
+
 			if (game.equalsIgnoreCase("stay") || game.equals("2")) {
 				break;
-			} if (game.equalsIgnoreCase("hit") || game.equals("1")) {
-				player.setPlayerCard(card.select());
-				player.showDeck();
-				System.out.print("플레이어 점수 : ");
-				System.out.println(player.totalScore());
-				bust = gameRule.playerBustCheck(player);
 			}
-				if (bust == true) {
-					System.out.println("플레이어 버스트입니다.");
-					System.out.print("플레이어 점수 : ");
-					System.out.println(player.totalScore());
-					break;
-				}
-
-			
-
-		} // end while
-		while(dealer.totalScore()<17) {
-			dealer.setDealerCard(card.select());
-			dealer.dealerShowDeck();
-			System.out.print("딜러 점수 : ");
-			System.out.println(dealer.totalScore());
-			dBust = gameRule.dealerBustCheck(dealer);
-			if(dBust == true) {
-				System.out.println("딜러 버스트");
-				System.out.print("딜러 점수 : ");
-				System.out.println(dealer.totalScore());
+			if (game.equalsIgnoreCase("hit") || game.equals("1")) {
+				line.sLine(30);
+				player.setPlayerCard(card.select());
+				dealer.dealerShowDeck();				
+				player.showDeck();				
+				bust = gameRule.playerBustCheck(player);
+				line.sLine(30);
+				
+			}
+			if (bust == true) {
+				System.out.println("플레이어 버스트입니다.");
 				break;
 			}
-		} 
-		
-		if (player.totalScore() == 21) {
-			System.out.println("플레이어 !블랙잭!  ");
-			System.out.println("플레이어 승리");
-		}
-		if (dealer.totalScore() == 21) {
-			System.out.println("딜러 블랙잭");
-			System.out.println("딜러 승리");
-		}
 
-		else if (dealer.totalScore() < player.totalScore() && bust == false) {			
-			System.out.println("플레이어 승리");
-		}
-		else if (player.totalScore() < dealer.totalScore() && dBust == false) {
-			System.out.println("딜러 승리");
-		}
+		} // end while
+			// 플레이어 턴 이후 딜러턴
+			// 딜러 턴 딜러가 17미만일경우에 카드를 뽑고 아닐경우에 결과
+		while (dealer.totalScore() < 17) {
+			dealer.setDealerCard(card.select());
+			line.sLine(40);
+			dealer.dealerShowDeck();			
+			player.showDeck();
+			line.sLine(40);
+			dBust = gameRule.dealerBustCheck(dealer);
+			if (dBust == true) {
+				System.out.println("딜러 버스트");				
+				break;
+			}
+		} // end 딜러 while
 
-		else if (player.totalScore() == dealer.totalScore()) {
-			System.out.println("동점 ! ");
-		} else if(bust == true && dBust == false) {
-			System.out.println("플레이어 버스트");
-			System.out.println("딜러 승리");			
-		} else if(dBust == true && bust == false) {
-			System.out.println("딜러 버스트");
+		// 결과
+		if(gameRule.gameResult(player.totalScore(), dealer.totalScore()) == false && dBust == false ) {
+			dealer.dealerShowDeck();
+			player.showDeck();
+			System.out.println("딜러 승리");
+		} else {
+			dealer.dealerShowDeck();
+			player.showDeck();
 			System.out.println("플레이어 승리");
-			
 		}
 	} // end play
 } // end Game
-// 승리조건 만들기
