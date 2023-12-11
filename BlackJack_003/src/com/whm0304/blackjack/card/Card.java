@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.whm0304.blackjack.util.AnsiConsol;
+
 public class Card {
 
-	private String[] shape = { "스페이드", "클로버", "하트", "다이아" };
+	private String[] shape = { "스페이드", AnsiConsol.GREEN("클로버"),AnsiConsol.RED("하트"), AnsiConsol.RED("다이아") };
 	private int cardIndex;
 
 	// 52장 고정되어있다
