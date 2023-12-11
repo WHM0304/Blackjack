@@ -3,6 +3,8 @@ package com.whm0304.blackjack.player;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.whm0304.blackjack.util.AnsiConsol;
+
 public class Player {
 
 	private List<String> playerCard = null;
@@ -18,7 +20,8 @@ public class Player {
 	}
 	
 	public void showDeck() {
-		System.out.println("플레이어 덱");
+		String playerDeck = AnsiConsol.BLUE("플레이어 덱");
+		System.out.println(playerDeck);
 		System.out.print("[");
 		for(int i = 0 ; i <playerCard.size(); i++) {
 			System.out.printf("%s  ",playerCard.get(i));	
