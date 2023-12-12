@@ -20,8 +20,7 @@ public class Player {
 	}
 	
 	public void showDeck() {
-		String playerDeck = AnsiConsol.BLUE("플레이어 덱");
-		System.out.println(playerDeck);
+		System.out.println("플레이어 덱");
 		System.out.print("[");
 		for(int i = 0 ; i <playerCard.size(); i++) {
 			System.out.printf("%s  ",playerCard.get(i));	

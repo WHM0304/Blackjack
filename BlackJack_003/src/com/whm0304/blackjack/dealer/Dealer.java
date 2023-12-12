@@ -21,8 +21,7 @@ public class Dealer {
 
 
 	public void dealerShowDeck() {
-		String dealerDeck = AnsiConsol.PURPLE("딜러 덱");
-		System.out.println(dealerDeck);
+		System.out.println("딜러 덱");
 		System.out.print("[");
 		for (int i = 0; i < dealerCard.size(); i++) {
 			System.out.printf("%s   ", dealerCard.get(i));

@@ -8,21 +8,21 @@ import com.whm0304.blackjack.gamerule.GameRule;
 import com.whm0304.blackjack.player.Player;
 import com.whm0304.blackjack.util.Line;
 
-public class GameA {
+public class Game {
 
 	private Card card = null;
 	private Player player = null;
 	private Dealer dealer = null;
 	GameRule gameRule = null;
-	Line line = null;
-	public GameA() {
+	
+	public Game() {
 		gameRule = new GameRule();
-		line = new Line();
+		
 	}
 
-	public void play() {
+	public Integer play() {
 
-		System.out.println("=============블랙잭 시작=================");
+		System.out.println("=============블랙잭=================");
 		Scanner scan = new Scanner(System.in);
 
 		System.out.print("시작(1) or 종료(2) >> ");
@@ -30,7 +30,7 @@ public class GameA {
 
 		if (gameStart.equals("종료") || gameStart.equalsIgnoreCase("2")) {
 			System.out.println("종료되었습니다");
-			return;
+			return null;
 		}
 		// 게임시작 여부 확인
 		if (gameStart.equals("시작") || gameStart.equalsIgnoreCase("1")) {
@@ -41,32 +41,37 @@ public class GameA {
 			player = new Player();
 			dealer = new Dealer();
 			gameRule = new GameRule();
-
+			
 			player.setPlayerCard(card.select());
-			System.out.println();
 			dealer.setDealerCard(card.select());
 			System.out.println();
-			line.sLine(30);
+			Line.sLine(30);
 			dealer.dealerShowDeck();
+			System.out.println();
 			player.showDeck();
-			line.sLine(30);
+			Line.sLine(30);
+			System.out.println();
 		}
 
 		// 2장씩 확인하기
-		gameRule.gameTempo();
-		dealer.setDealerCard(card.select());
+		gameRule.gameTempo("");
+		dealer.setDealerCard(card.select());		
+		Line.sLine(30);
 		System.out.println();
-		line.sLine(30);
 		dealer.dealerShowDeck();
-		player.showDeck();
-		line.sLine(30);
-		gameRule.gameTempo();
-		player.setPlayerCard(card.select());
 		System.out.println();
-		line.sLine(30);
-		dealer.dealerShowDeck();
 		player.showDeck();
-		line.sLine(30);
+		System.out.println();
+		Line.sLine(30);
+		gameRule.gameTempo("");
+		player.setPlayerCard(card.select());		
+		Line.sLine(30);
+		System.out.println();
+		dealer.dealerShowDeck();
+		System.out.println();
+		player.showDeck();
+		System.out.println();
+		Line.sLine(30);
 		
 		boolean dBust = gameRule.dealerBustCheck(dealer);
 		boolean bust = gameRule.playerBustCheck(player);		
@@ -80,51 +85,80 @@ public class GameA {
 				break;
 			}
 			if (game.equalsIgnoreCase("hit") || game.equals("1")) {
-				line.sLine(30);
+				Line.sLine(30);
+				System.out.println();
 				player.setPlayerCard(card.select());
-				dealer.dealerShowDeck();				
-				player.showDeck();				
+				dealer.dealerShowDeck();
+				System.out.println();
+				player.showDeck();	
+				System.out.println();
 				bust = gameRule.playerBustCheck(player);
-				line.sLine(30);
+				Line.sLine(30);
 				
 			}
 			if (bust == true) {
 				System.out.println("플레이어 버스트입니다.");
 				break;
 			}
+			
 
 		} // end while
 			// 플레이어 턴 이후 딜러턴
 			// 딜러 턴 딜러가 17미만일경우에 카드를 뽑고 아닐경우에 결과
+		gameRule.gameTempo("딜러 턴을 확인");
 		while (dealer.totalScore() < 17) {
+			Line.sLine(30);
 			dealer.setDealerCard(card.select());
-			line.sLine(40);
-			dealer.dealerShowDeck();			
+			System.out.println();
+			dealer.dealerShowDeck();
+			System.out.println();
 			player.showDeck();
-			line.sLine(40);
+			System.out.println();
+			Line.sLine(30);
 			dBust = gameRule.dealerBustCheck(dealer);
-			if (dBust == true) {
-				line.dLine(40);
-				System.out.println("딜러 버스트");
-				line.dLine(40);
+			if (dBust == true) {				
+				System.out.print("딜러 버스트\t");				
 				break;
-			}
+			}			
 		} // end 딜러 while
-
+		gameRule.gameTempo("결과 확인");
 		// 결과
 		if(gameRule.gameResult(player.totalScore(), dealer.totalScore()) == false && dBust == false ) {
+			Line.sLine(30);
+			System.out.println();
 			dealer.dealerShowDeck();
+			System.out.println();
 			player.showDeck();
+			Line.dLine(30);
 			System.out.println("딜러 승리");
-		} else if(player.totalScore() == dealer.totalScore() && dBust == false && bust ==false) {
+		} else {
+			System.out.println();
+			Line.dLine(30);
 			dealer.dealerShowDeck();
+			System.out.println();
 			player.showDeck();
-			System.out.println("동점 무승부");
-			
-		} else  {
-			dealer.dealerShowDeck();
-			player.showDeck();
+			Line.dLine(30);
 			System.out.println("플레이어 승리");
 		}
+		return 1;
 	} // end play
+	
+	public  void plays() {
+		
+		while(true) {
+			this.play();
+			if(this.play() == null) {
+				break;
+			} else {
+				continue;
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
 } // end Game

@@ -1,12 +1,12 @@
 package com.whm0304.blackjack;
 
-import com.whm0304.blackjack.game.GameA;
+import com.whm0304.blackjack.game.Game;
 
 public class BlackJack {
 	public static void main(String[] args) {
 		
-		GameA game = new GameA();
-		game.play();
+		Game game = new Game();
+		game.plays();
 //		Card card = new Card();
 //		card.initSetCard();	
 		

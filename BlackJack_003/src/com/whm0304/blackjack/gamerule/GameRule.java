@@ -39,9 +39,9 @@ public class GameRule {
 		}
 		return dBust;
 	}
-	public void gameTempo() {
+	public void gameTempo(String title) {
 		while(true) {
-			String str = AnsiConsol.YELLOW("다음 진행을 원하시면 1번(진행) >> ");
+			String str = AnsiConsol.YELLOW( title +" 진행을 원하시면 1번(진행) >> ");
 			System.out.println(str);
 			String gameTempo = scan.nextLine();
 			if(gameTempo.equals("진행")|| gameTempo.equals("1")) {
@@ -50,20 +50,7 @@ public class GameRule {
 			
 		}
 	}
-	public void gameGo() {
-		while(true) {
-			System.out.println("다음 게임을 진행을 원하시면 1번(진행) ");
-			System.out.print("다음 게임을 진행을 원하시면 2번(포기) >> ");
-			String gameGo = scan.nextLine();
-			if(gameGo.equals("진행")|| gameGo.equals("1")) {
-				break;
-			} else if(gameGo.equalsIgnoreCase("포기")|| gameGo.equals("2")) {
-				return;
-				
-			}
-			
-		}
-	}
+
 	public boolean gameResult(int player, int dealer) {
 		int dealerMin = 21 - dealer;
 		int playerMin = 21 - player;
