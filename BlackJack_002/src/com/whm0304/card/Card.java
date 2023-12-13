@@ -21,7 +21,8 @@ public class Card {
 	};
 	
 	
-	
+	// 카드의 구성들을 만들었으니
+	// 카드를 섞어놓는 method 를 만들기
 	public void shuffle() {
 		
 		for(int i = 0; i<card.length; i++) {
@@ -43,6 +44,38 @@ public class Card {
 		cardIndex++;
 		return selectCard;
 	}
+	
+	
+	
+	
+	
+	
+	// 문제점
+	// 게임의 구성들을 만들다 보니까 배열안에 있는 카드 숫자 입력이 안되있음
+	// 오늘 수업때 리스트 구성을 배움 
+	// 리스트에 넣어서 진행
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

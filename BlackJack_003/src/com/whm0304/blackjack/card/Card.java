@@ -64,7 +64,7 @@ public class Card {
 		cardIndex++;
 		return selectCard;
 	}
-	
+	// 카드 구성이 끝났으니 이제 게임 만들기
 	
 	
 
