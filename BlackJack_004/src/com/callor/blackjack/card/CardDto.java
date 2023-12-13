@@ -18,6 +18,5 @@ public class CardDto {
 		};
 		return pattern;
 	}
-	
 
 }
