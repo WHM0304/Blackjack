@@ -12,7 +12,7 @@ public class Deck {
 		cardIndex = 0;
 		createCard();
 	}
-public  void createCard() {
+public void createCard() {
 		
 		String strSuit = "◆♥♠♣";
 		String strDenomination = "A234567890QJ";
@@ -61,46 +61,33 @@ public  void createCard() {
 //			}
 //			System.out.println();
 //		}
-		
-		
-		
+						
 	}
-public void CardShow() {
-	
-	String[] cardA = {
-		String.format("┌──────┐ "),
-		String.format("│  %1s   │ ","◆"),
-		String.format("│      │ "),
-		String.format("│      │ "),
-		String.format("│  %2s  │ ","A"),
-		String.format("└──────┘ ")
 
-	};
-	String[] cardB = {
+
+
+
+
+public void DealerCardShow() {
+	
+	
+
+	String[] cardDealer = {
 			String.format("┌──────┐ "),
-			String.format("│  %1s   │ ","♣"),
+			String.format("│  %1s   │ ",""),
 			String.format("│      │ "),
 			String.format("│      │ "),
-			String.format("│  %2s  │ ","3"),
+			String.format("│  %2s  │ ",""),
 			String.format("└──────┘ ")
 
 		};
-	String[] cardC = {
-			String.format("┌──────┐ "),
-			String.format("│  %1s   │ ","♥"),
-			String.format("│      │ "),
-			String.format("│      │ "),
-			String.format("│  %2s  │ ","7"),
-			String.format("└──────┘ ")
-
-	};
+	
 	
 	List<String[]> cardList = new ArrayList<>();
-	cardList.add(cardA);
-	cardList.add(cardB);
-	cardList.add(cardB);
-	cardList.add(cardA);
-	cardList.add(cardC);
+	
+	cardList.add(cardDealer);
+	
+	
 	
 	// for(int list = 0 ; list < cardList.size() ; list ++ ) {
 	//	for(int card = 0 ; card < cardList.get(list).length ;  card++) {
@@ -108,7 +95,45 @@ public void CardShow() {
 	//	}
 	// }
 	
-	int cardLine = cardA.length;
+	int cardLine = cardDealer.length;
+	for(int arr = 0 ; arr < cardLine ; arr++) {
+		int cardCount = cardList.size();
+		for(int list = 0 ; list < cardCount ; list++) {
+			String[] card = cardList.get(list);
+			System.out.print(card[arr] + "\t");
+		}
+		System.out.println();
+		
+	}
+}
+public void PlayerCardShow() {
+	
+	
+	String[] cardPlayer = {
+		String.format("┌──────┐ "),
+		String.format("│  %1s   │ ",""),
+		String.format("│      │ "),
+		String.format("│      │ "),
+		String.format("│  %2s  │ ",""),
+		String.format("└──────┘ ")
+
+	};
+	
+	
+	
+	List<String[]> cardList = new ArrayList<>();
+	cardList.add(cardPlayer);
+	
+	
+	
+	
+	// for(int list = 0 ; list < cardList.size() ; list ++ ) {
+	//	for(int card = 0 ; card < cardList.get(list).length ;  card++) {
+	//		System.out.println(cardList.get(list)[card]);
+	//	}
+	// }
+	
+	int cardLine = cardPlayer.length;
 	for(int arr = 0 ; arr < cardLine ; arr++) {
 		int cardCount = cardList.size();
 		for(int list = 0 ; list < cardCount ; list++) {
@@ -120,14 +145,7 @@ public void CardShow() {
 	}
 }
 
-	public String select() {
-		
-		String selectCard = deckList.get(cardIndex).toString();
-		 
-		cardIndex ++;
-		return selectCard;
-		
-		
-	}
+
+	
 
 }
