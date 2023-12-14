@@ -22,48 +22,50 @@ public class Card {
 	}
 
 	// 카드생성
-//createCard 는 숫자 집어넣기 밑에 initSetCard 는 문양 별로 집어넣기
-	public void initSetCard() {
-		for (int i = 0; i < 4; i++) {
-			createCard(i);
-		}
-		Collections.shuffle(card);
-		//카드 52장 확인 
-//		for(int i = 0; i < 52; i++) {
-//			System.out.println(card.get(i));
-//		}
 
-	}
 	
 // 1~ 13까지 숫자를 문양별로 집어넣기
 	// A 는 1 , J 는 11 , Q 는 12 , K 는 13
 	public void createCard(int shapeIndex) {
-		String shapeName;
+		String shapeNum;
 
 		for (int i = 1; i <= 13; i++) {
-			shapeName = shape[shapeIndex];
+			shapeNum= shape[shapeIndex];
 			if (i == 1) {
-				shapeName = shapeName + "A";
+				shapeNum = shapeNum + "A";
 			} else if (i == 11) {
-				shapeName = shapeName + "J";
+				shapeNum = shapeNum + "J";
 			} else if (i == 12) {
-				shapeName = shapeName + "Q";
+				shapeNum = shapeNum + "Q";
 			} else if (i == 13) {
-				shapeName = shapeName + "K";
+				shapeNum = shapeNum + "K";
 			} else {
-				shapeName = shapeName + i;
+				shapeNum = shapeNum + i;
 			}
-			card.add(shapeName);
+			card.add(shapeNum);
 		}
 	}
 	
-	public String select() {
-		String selectCard ="";
-		selectCard = card.get(cardIndex);
-				
-		cardIndex++;
-		return selectCard;
-	}
+	
+	//createCard 는 숫자 집어넣기 밑에 initSetCard 는 문양 별로 집어넣기
+		public void initSetCard() {
+			for (int i = 0; i < 4; i++) {
+				createCard(i);
+			}
+			Collections.shuffle(card);
+			//카드 52장 확인 
+//			for(int i = 0; i < 52; i++) {
+//				System.out.println(card.get(i));
+//			}
+
+		}
+		public String select() {
+			String selectCard ="";
+			selectCard = card.get(cardIndex);
+					
+			cardIndex++;
+			return selectCard;
+		}
 	// 카드 구성이 끝났으니 이제 게임 만들기
 	
 	
