@@ -8,7 +8,7 @@ import com.whm0304.blackjack.util.AnsiConsol;
 
 public class Card {
 
-	private String[] shape = { "스페이드","클로버","하트", "다이아" };
+	private String[] shape = { "♠","♣","♥", "◆" };
 	private int cardIndex;
 
 	// 52장 고정되어있다
@@ -24,8 +24,8 @@ public class Card {
 	// 카드생성
 
 	
-// 1~ 13까지 숫자를 문양별로 집어넣기
-	// A 는 1 , J 는 11 , Q 는 12 , K 는 13
+
+	//createCard 는 숫자 집어넣기 밑에 initSetCard 는 문양 별로 집어넣기
 	public void createCard(int shapeIndex) {
 		String shapeNum;
 
@@ -47,7 +47,8 @@ public class Card {
 	}
 	
 	
-	//createCard 는 숫자 집어넣기 밑에 initSetCard 는 문양 별로 집어넣기
+	// 1~ 13까지 숫자를 문양별로 집어넣기
+		// A 는 1 , J 는 11 , Q 는 12 , K 는 13
 		public void initSetCard() {
 			for (int i = 0; i < 4; i++) {
 				createCard(i);
@@ -57,6 +58,7 @@ public class Card {
 //			for(int i = 0; i < 52; i++) {
 //				System.out.println(card.get(i));
 //			}
+			
 
 		}
 		public String select() {
@@ -68,6 +70,6 @@ public class Card {
 		}
 	// 카드 구성이 끝났으니 이제 게임 만들기
 	
-	
+
 
 }

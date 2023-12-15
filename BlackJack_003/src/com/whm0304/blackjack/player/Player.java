@@ -20,9 +20,10 @@ public class Player {
 	}
 	
 	public void showDeck() {
+		int pSize = playerCard.size();
 		System.out.println("플레이어 덱");
 		System.out.print("[");
-		for(int i = 0 ; i <playerCard.size(); i++) {
+		for(int i = 0 ; i <pSize; i++) {
 			System.out.printf("%s  ",playerCard.get(i));	
 			
 		}		

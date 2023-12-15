@@ -21,12 +21,14 @@ public class Dealer {
 
 
 	public void dealerShowDeck() {
+		int dSize = dealerCard.size();
 		System.out.println("딜러 덱");
 		System.out.print("[");
-		for (int i = 0; i < dealerCard.size(); i++) {
+		for (int i = 0; i < dSize; i++) {
 			System.out.printf("%s   ", dealerCard.get(i));
 			
 		}
+		
 		System.out.print("]\n");
 		
 	}
