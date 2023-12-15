@@ -27,22 +27,22 @@ public class Card {
 
 	//createCard 는 숫자 집어넣기 밑에 initSetCard 는 문양 별로 집어넣기
 	public void createCard(int shapeIndex) {
-		String shapeNum;
+		String shapeName;
 
 		for (int i = 1; i <= 13; i++) {
-			shapeNum= shape[shapeIndex];
+			shapeName= shape[shapeIndex];
 			if (i == 1) {
-				shapeNum = shapeNum + "A";
+				shapeName = shapeName + "A";
 			} else if (i == 11) {
-				shapeNum = shapeNum + "J";
+				shapeName = shapeName + "J";
 			} else if (i == 12) {
-				shapeNum = shapeNum + "Q";
+				shapeName = shapeName + "Q";
 			} else if (i == 13) {
-				shapeNum = shapeNum + "K";
+				shapeName = shapeName + "K";
 			} else {
-				shapeNum = shapeNum + i;
+				shapeName = shapeName + i;
 			}
-			card.add(shapeNum);
+			card.add(shapeName);
 		}
 	}
 	
